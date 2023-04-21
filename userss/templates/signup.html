@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <title>UserSignupSignin Project</title>
+</head>
+<body>
+    <h1>Project Meta</h1>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        <label for="">Full name</label>
+        <input type="text" name="fullname" id="">
+        <br>
+        <label for="">Username</label>
+        <input type="text" name="username" id="">
+        <br>
+        <label for="">Email</label>
+        <input type="email" name="email" id="">
+        <br>
+        <label for="">Password</label>
+        <input type="password" name="password" id="">
+        <br>
+        <button type="submit">Sign Up</button>
+    </form>
+    <hr>
+    <h3>Already have an acoount? <a href="{% url 'login' %}"> Log in</a></h3>
+</body>
+</html>
