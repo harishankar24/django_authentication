@@ -1,8 +1,54 @@
-<h1>Hello, {{ name }}</h1>
-<ul>
-    <li><h3>Registered email is: {{ email }}</h3></li>
-    <li><h3>Last Login at: {{ last_login }}</h3></li>
-</ul>
-
-
-<h3><a href="{% url 'logout' %}">Logout</a></h3>
+<html>
+    <head>
+        <title></title>
+        <style>
+             @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body{
+                background: #D8FFF1;
+                font-family: 'Poppins', sans-serif;
+            }
+            .container{
+                width: 500px;
+                margin: 8% auto 0;
+                padding: 20px;
+                text-align: center;
+                background-color: #78E4D4;
+                box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.7);
+            }
+            .container h1{
+                margin-bottom: 20px;
+            }
+            a{
+                text-decoration: none;
+                width: 40%;
+                display: block;
+                
+            }
+            .anchor-btn{
+                padding: 10px;
+                border-radius: 20px;
+                margin: 30px auto 0;
+                font-size: 15px;
+                outline: none;
+                border: none;
+                cursor: pointer;
+                color: #fff;
+                background-color: #00ADB5;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Hello, {{ name }}</h1>
+            <h4>Registered email: <span><em>{{ email }}</em></span></h4>
+            <h4>Last Login on: <span><em>{{ last_login }}</em></span></h4>
+            <a href="{% url 'logout' %}" class="anchor-btn">Logout</a>
+        </div>
+    </body>
+</html>
