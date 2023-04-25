@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+    <script src="https://kit.fontawesome.com/d16a2c668f.js" crossorigin="anonymous"></script>
     <title>UserSignupSignin Project</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
@@ -14,7 +15,7 @@
         }
         .container{
             width: 300px;
-            margin: 8% auto 0;
+            margin: 5% auto 0;
             padding: 20px;
             text-align: center;
             /* background-color: #c8c1f6; */
@@ -77,18 +78,53 @@
             color: #fff;
             background-color: #00695c;
         }
+        .signup-btn:hover, .anchor-btn:hover{
+            font-weight: bold;
+        }
+        .toast{
+            width: 350px;
+            margin: auto;
+            background-color: #fff;
+            padding: 10px;
+            position: relative;
+            top: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 0 5px;
+            transform: scale(0.8);
+        }
+        .toast i.check{
+            margin-right: 10px;
+            color: green;
+        }
+        .toast i.close{
+            position: absolute;
+            right: 15px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .toast i.close:hover{
+            color: red;
+        }
     </style>
 </head>
 <body>
+    {% for message in messages %}
+        <div class="toast" id="toast">
+            <i class="fas fa-check-circle check"></i>
+            <p>{{ message }}</p>
+            <i class="fas fa-times close" onclick="turnoff()"></i>
+        </div>
+    {% endfor %}
     <div class="container">
         <h1>Signup</h1>
         <form method="post">
             {% csrf_token %}
-            <input type="text" name="firstname" placeholder="Enter first name" class="input-box">
+            <input type="text" name="firstname" placeholder="Enter first name" class="input-box" required>
             <input type="text" name="lastname" placeholder="Enter last name" class="input-box">
-            <input type="text" name="username" placeholder="Enter username" class="input-box">
-            <input type="email" name="email" placeholder="Enter email" class="input-box">
-            <input type="password" name="password" placeholder="Enter password" class="input-box">
+            <input type="text" name="username" placeholder="Enter username" class="input-box" required>
+            <input type="email" name="email" placeholder="Enter email" class="input-box" required>
+            <input type="password" name="password" placeholder="Enter password" class="input-box" required>
             <br>
             <button type="submit" class="signup-btn">Sign Up</button>
         </form>
@@ -96,5 +132,12 @@
         <p class="or">OR</p>
         <a href="{% url 'login' %}" class="anchor-btn">Login</a>
     </div>
+
+    <script>
+        let toast = document.getElementById('toast')
+        function turnoff(){
+            toast.style.display = 'none'
+        }
+    </script>
 </body>
 </html>

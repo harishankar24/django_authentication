@@ -50,6 +50,9 @@
         .login-btn{
             background-color: #2bbbad;
         }
+        .login-btn:hover, .anchor-btn:hover{
+            font-weight: bold;
+        }
         hr{
             margin-top: 20px;
             margin-left: 25px;
@@ -85,8 +88,8 @@
         <h1>Login</h1>
         <form method='POST'>
             {% csrf_token %}
-            <input type="text" name="username" placeholder="Enter username" class="input-box">
-            <input type="password" name="password" placeholder="Enter password" class="input-box">
+            <input type="text" name="username" placeholder="Enter username" class="input-box" required>
+            <input type="password" name="password" placeholder="Enter password" class="input-box" required>
             <br>
             <button type="submit" class="login-btn">Login</button>
             <hr>

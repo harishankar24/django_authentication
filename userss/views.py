@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 def SignupView(request):
@@ -14,11 +15,10 @@ def SignupView(request):
         password = request.POST['password']
         # password = request.POST.get('password')
         print(firstname, lastname, username, email, password )
-        user = User.objects.create_user(username=username, email=email, password=password)
-        user.first_name = firstname
-        user.last_name = lastname
+        user = User.objects.create_user(username=username, email=email, password=password, first_name=firstname, last_name=lastname)
         user.save()
-        return HttpResponse("✔✔ User has been created successfully!! ")
+        messages.info(request, 'Account created successfully!!')
+        # return HttpResponse("✔✔ User has been created successfully!! ")
     return render(request, 'signup.html')
 
 
