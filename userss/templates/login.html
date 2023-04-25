@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d16a2c668f.js" crossorigin="anonymous"></script>
     <title>Check</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
@@ -21,7 +22,6 @@
             margin: 8% auto 0;
             padding: 20px;
             text-align: center;
-            /* background-color: #c8c1f6; */
             box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.7);
         }
         .container h1{
@@ -81,9 +81,36 @@
             color: #fff;
             background-color: #00695c;
         }
+        .toast{
+            width: 350px;
+            margin: auto;
+            background-color: #fff;
+            padding: 10px;
+            position: relative;
+            top: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 0 5px;
+            transform: scale(0.8);
+        }
+        .toast i.close{
+            position: absolute;
+            right: 15px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .toast i.close:hover{
+            color: red;
+        }
     </style>
 </head>
 <body>
+    {% for message in messages %}
+        <div class="toast" id="toast">
+            <p>{{ message }}</p>
+            <i class="fas fa-times close" onclick="turnoff()"></i>
+        </div>
+    {% endfor %}
     <div class="container">
         <h1>Login</h1>
         <form method='POST'>
@@ -97,5 +124,11 @@
         </form>
         <a href="{% url 'signup' %}" class="anchor-btn">Signup</a>
     </div>
+    <script>
+        let toast = document.getElementById('toast')
+        function turnoff(){
+            toast.style.display = 'none'
+        }
+    </script>
 </body>
 </html>
